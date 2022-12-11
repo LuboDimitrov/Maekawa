@@ -1,13 +1,14 @@
 import json
 
+
 class Message(object):
     def __init__(self,
-            msg_type=None,
-            src=None,
-            dest=None,
-            ts=None,
-            data=None,
-            ):
+                 msg_type=None,
+                 src=None,
+                 dest=None,
+                 ts=None,
+                 data=None,
+                 ):
         self.msg_type = msg_type
         self.src = src
         self.dest = dest
@@ -15,11 +16,11 @@ class Message(object):
         self.data = data
 
     def __json__(self):
-        return dict(msg_type=self.msg_type, 
-            src=self.src,
-            dest=self.dest, 
-            ts=self.ts, 
-            data=self.data)
+        return dict(msg_type=self.msg_type,
+                    src=self.src,
+                    dest=self.dest,
+                    ts=self.ts,
+                    data=self.data)
 
     def set_type(self, msg_type):
         self.msg_type = msg_type
@@ -44,4 +45,3 @@ class Message(object):
         obj_dict['ts'] = self.ts
         obj_dict['data'] = self.data
         return json.dumps(obj_dict)
-
