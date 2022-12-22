@@ -1,10 +1,4 @@
-# A project skeleton
-
-A set of nodes can exchange messages among them in multicast and also send one-to-one messages using socket library.
-
-A node has two-child threads to manage the communication: a ServerNode (get requests) and NodeSend (send requests).
-
-This project is the based skeleton to design and implement the Maekawa Mutex algorithm with Lamport timestamps.
+# Maekawa Algorithm
 
 **References**
 - https://www.geeksforgeeks.org/maekawas-algorithm-for-mutual-exclusion-in-distributed-system/
