@@ -17,27 +17,31 @@ In the client side, there is a main method called **update()** that executes ind
 
 ```python
 update():
-  request_cs()
-  enter_cs()
-  exit_cs()
+  self.node.signal_request_cs.wait()
+  self.node.request_cs(datetime.now())
+  self.node.signal_enter_cs.wait()
+  self.node.enter_cs(datetime.now())
+  self.node.signal_exit_cs.wait()
+  self.node.exit_cs(datetime.now())
 ```
 
 ### Server
 The server side handles the requests in a method called **process_message()** that depending on the type of message, executes the corresponding method.
 
 ```python
-if msg.msg_type == MSG_TYPE.REQUEST:
-    self._on_request(msg)
-elif msg.msg_type == MSG_TYPE.GRANT:
-    self._on_grant()
-elif msg.msg_type == MSG_TYPE.RELEASE:
-    self._on_release()
-elif msg.msg_type == MSG_TYPE.FAIL:
-    self._on_fail(msg)
-elif msg.msg_type == MSG_TYPE.INQUIRE:
-    self._on_inquire(msg)
-elif msg.msg_type == MSG_TYPE.YIELD:
-    self._on_yield()
+process_message():
+  if msg.msg_type == MSG_TYPE.REQUEST:
+      self._on_request(msg)
+  elif msg.msg_type == MSG_TYPE.GRANT:
+      self._on_grant()
+  elif msg.msg_type == MSG_TYPE.RELEASE:
+      self._on_release()
+  elif msg.msg_type == MSG_TYPE.FAIL:
+      self._on_fail(msg)
+  elif msg.msg_type == MSG_TYPE.INQUIRE:
+      self._on_inquire(msg)
+  elif msg.msg_type == MSG_TYPE.YIELD:
+      self._on_yield()
 ```
 
 **References**
